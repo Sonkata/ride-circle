@@ -127,54 +127,8 @@ Mobile navigation
 GitHub Pages deployment
 Building a larger portfolio-ready React project
 Project Structure
-src/
-  components/
-    BikerRouteCard.jsx
-    BikerRouteList.jsx
-    ConfirmModal.jsx
-    FilterButtons.jsx
-    Footer.jsx
-    Layout.jsx
-    Navbar.jsx
-    RideCard.jsx
-    RideList.jsx
-    RiderCard.jsx
-    RiderList.jsx
-    SearchBox.jsx
 
-  data/
-    defaultProfile.js
-    riders.js
-    rides.js
-    routes.js
-
-  hooks/
-    useLocalStorage.js
-
-  pages/
-    About.jsx
-    BikerRoutes.jsx
-    CreateRide.jsx
-    Discover.jsx
-    EditProfile.jsx
-    EditRide.jsx
-    Home.jsx
-    JoinedRides.jsx
-    Messages.jsx
-    NotFound.jsx
-    Profile.jsx
-    RideDetails.jsx
-    RiderDetails.jsx
-    Rides.jsx
-    SavedRiders.jsx
-
-  utils/
-    calculateCompatibility.js
-
-  App.jsx
-  App.css
-  main.jsx
-Future Improvements
+Future Improvements:
 Real authentication
 Real database with Supabase or Firebase
 Real-time chat
@@ -188,7 +142,5 @@ Real matching algorithm
 Notifications
 Mobile app version with React Native
 Status
-
-This is a portfolio-ready intermediate React project.
 
 The current version uses mock data and LocalStorage to simulate real app behavior.
