@@ -55,10 +55,7 @@ function Discover() {
       </div>
 
       <div className="discover-controls">
-        <SearchBox
-          searchTerm={searchTerm}
-          onSearchChange={setSearchTerm}
-        />
+        <SearchBox searchTerm={searchTerm} onSearchChange={setSearchTerm} />
 
         <FilterButtons
           filters={bikeTypeFilters}

@@ -1,4 +1,4 @@
-function FilterButtons({ filters, activeFilter, onFilterChange }) {
+function FilterButtons({ filters = [], activeFilter, onFilterChange }) {
   return (
     <div className="filter-buttons">
       {filters.map((filter) => (

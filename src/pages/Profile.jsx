@@ -112,6 +112,10 @@ function Profile() {
               Create Ride
             </Link>
 
+            <Link to="/joined-rides" className="btn secondary-btn">
+              Joined Rides
+            </Link>
+
             <Link to="/discover" className="btn secondary-btn">
               Discover Riders
             </Link>
@@ -139,9 +143,9 @@ function Profile() {
 
           {joinedRides.length > 0 ? (
             joinedRides.slice(0, 3).map((ride) => (
-              <span key={ride.id}>
+              <Link to={`/rides/${ride.id}`} key={ride.id}>
                 {ride.title} · {ride.city}
-              </span>
+              </Link>
             ))
           ) : (
             <p>No joined rides yet.</p>
@@ -153,9 +157,9 @@ function Profile() {
 
           {createdRides.length > 0 ? (
             createdRides.slice(0, 3).map((ride) => (
-              <span key={ride.id}>
+              <Link to={`/rides/${ride.id}`} key={ride.id}>
                 {ride.title} · {ride.city}
-              </span>
+              </Link>
             ))
           ) : (
             <p>No created rides yet.</p>

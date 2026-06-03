@@ -12,6 +12,7 @@ function Navbar() {
         <NavLink to="/discover">Discover</NavLink>
         <NavLink to="/saved-riders">Saved</NavLink>
         <NavLink to="/rides">Rides</NavLink>
+        <NavLink to="/joined-rides">Joined</NavLink>
         <NavLink to="/create-ride">Create Ride</NavLink>
         <NavLink to="/profile">Profile</NavLink>
         <NavLink to="/about">About</NavLink>

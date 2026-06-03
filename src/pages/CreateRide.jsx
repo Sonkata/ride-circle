@@ -62,7 +62,7 @@ function CreateRide() {
       date: formData.date.trim(),
       pace: formData.pace,
       difficulty: formData.difficulty,
-      joinedRiders: 1,
+      joinedRiders: 0,
       maxRiders: Number(formData.maxRiders),
       bikeTypes: formData.bikeTypes
         .split(",")
@@ -78,13 +78,20 @@ function CreateRide() {
 
     const savedRides = localStorage.getItem("createdRides");
     const currentCreatedRides = savedRides ? JSON.parse(savedRides) : [];
-
     const updatedCreatedRides = [newRide, ...currentCreatedRides];
 
     localStorage.setItem("createdRides", JSON.stringify(updatedCreatedRides));
 
+    const savedJoinedIds = localStorage.getItem("joinedRideIds");
+    const currentJoinedIds = savedJoinedIds ? JSON.parse(savedJoinedIds) : [];
+
+    localStorage.setItem(
+      "joinedRideIds",
+      JSON.stringify([...currentJoinedIds, newRide.id])
+    );
+
     setError("");
-    setSuccess("Ride created successfully. Redirecting to rides...");
+    setSuccess("Ride created successfully. Redirecting to ride details...");
 
     setFormData({
       title: "",
@@ -100,7 +107,7 @@ function CreateRide() {
     });
 
     setTimeout(() => {
-      navigate("/rides");
+      navigate(`/rides/${newRide.id}`);
     }, 800);
   }
 

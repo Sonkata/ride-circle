@@ -1,6 +1,6 @@
 import RideCard from "./RideCard";
 
-function RideList({ rides, joinedRideIds, onToggleJoin }) {
+function RideList({ rides, joinedRideIds, onToggleJoin, onDeleteRide }) {
   return (
     <div className="ride-grid">
       {rides.map((ride) => (
@@ -9,6 +9,7 @@ function RideList({ rides, joinedRideIds, onToggleJoin }) {
           ride={ride}
           isJoined={joinedRideIds.includes(ride.id)}
           onToggleJoin={onToggleJoin}
+          onDeleteRide={onDeleteRide}
         />
       ))}
     </div>

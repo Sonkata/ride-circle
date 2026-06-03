@@ -1,39 +1,27 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 import { rides as defaultRides } from "../data/rides";
 import RideList from "../components/RideList";
 import SearchBox from "../components/SearchBox";
 import FilterButtons from "../components/FilterButtons";
-
-function getStoredCreatedRides() {
-  const savedRides = localStorage.getItem("createdRides");
-
-  if (savedRides) {
-    return JSON.parse(savedRides);
-  }
-
-  return [];
-}
-
-function getStoredJoinedRideIds() {
-  const savedIds = localStorage.getItem("joinedRideIds");
-
-  if (savedIds) {
-    return JSON.parse(savedIds);
-  }
-
-  return [];
-}
+import useLocalStorage from "../hooks/useLocalStorage";
 
 function Rides() {
-  const [createdRides] = useState(getStoredCreatedRides);
-  const [joinedRideIds, setJoinedRideIds] = useState(getStoredJoinedRideIds);
+  const [createdRides, setCreatedRides] = useLocalStorage("createdRides", []);
+  const [joinedRideIds, setJoinedRideIds] = useLocalStorage("joinedRideIds", []);
 
   const [searchTerm, setSearchTerm] = useState("");
   const [activePace, setActivePace] = useState("All");
   const [activeDifficulty, setActiveDifficulty] = useState("All");
 
-  const paceFilters = ["All", "Very chill", "Chill", "Normal", "Medium / Fast", "Fast"];
+  const paceFilters = [
+    "All",
+    "Very chill",
+    "Chill",
+    "Normal",
+    "Medium / Fast",
+    "Fast"
+  ];
 
   const difficultyFilters = [
     "All",
@@ -63,10 +51,6 @@ function Rides() {
     return matchesSearch && matchesPace && matchesDifficulty;
   });
 
-  useEffect(() => {
-    localStorage.setItem("joinedRideIds", JSON.stringify(joinedRideIds));
-  }, [joinedRideIds]);
-
   function handleToggleJoin(rideId) {
     setJoinedRideIds((currentIds) => {
       if (currentIds.includes(rideId)) {
@@ -74,6 +58,16 @@ function Rides() {
       }
 
       return [...currentIds, rideId];
+    });
+  }
+
+  function handleDeleteRide(rideId) {
+    setCreatedRides((currentRides) => {
+      return currentRides.filter((ride) => ride.id !== rideId);
+    });
+
+    setJoinedRideIds((currentIds) => {
+      return currentIds.filter((id) => id !== rideId);
     });
   }
 
@@ -99,14 +93,12 @@ function Rides() {
       </div>
 
       <div className="ride-controls">
-        <SearchBox
-          searchTerm={searchTerm}
-          onSearchChange={setSearchTerm}
-        />
+        <SearchBox searchTerm={searchTerm} onSearchChange={setSearchTerm} />
 
         <div className="filters-panel">
           <div className="filter-group">
             <p>Pace</p>
+
             <FilterButtons
               filters={paceFilters}
               activeFilter={activePace}
@@ -116,6 +108,7 @@ function Rides() {
 
           <div className="filter-group">
             <p>Difficulty</p>
+
             <FilterButtons
               filters={difficultyFilters}
               activeFilter={activeDifficulty}
@@ -128,7 +121,8 @@ function Rides() {
       <div className="results-row">
         <p>
           Showing <strong>{filteredRides.length}</strong> ride
-          {filteredRides.length !== 1 ? "s" : ""}
+          {filteredRides.length !== 1 ? "s" : ""} ·{" "}
+          <strong>{joinedRideIds.length}</strong> joined
         </p>
 
         {hasActiveFilters && (
@@ -141,6 +135,7 @@ function Rides() {
           rides={filteredRides}
           joinedRideIds={joinedRideIds}
           onToggleJoin={handleToggleJoin}
+          onDeleteRide={handleDeleteRide}
         />
       ) : (
         <div className="empty-state">
