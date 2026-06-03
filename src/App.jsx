@@ -7,7 +7,9 @@ import Rides from "./pages/Rides";
 import RideDetails from "./pages/RideDetails";
 import JoinedRides from "./pages/JoinedRides";
 import CreateRide from "./pages/CreateRide";
+import EditRide from "./pages/EditRide";
 import Profile from "./pages/Profile";
+import Messages from "./pages/Messages";
 import About from "./pages/About";
 import NotFound from "./pages/NotFound";
 import RiderDetails from "./pages/RiderDetails";
@@ -27,7 +29,9 @@ function App() {
         <Route path="/rides/:rideId" element={<RideDetails />} />
         <Route path="/joined-rides" element={<JoinedRides />} />
         <Route path="/create-ride" element={<CreateRide />} />
+        <Route path="/edit-ride/:rideId" element={<EditRide />} />
 
+        <Route path="/messages" element={<Messages />} />
         <Route path="/profile" element={<Profile />} />
         <Route path="/about" element={<About />} />
         <Route path="*" element={<NotFound />} />

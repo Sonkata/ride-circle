@@ -1,6 +1,6 @@
 import RiderCard from "./RiderCard";
 
-function RiderList({ riders, savedRiderIds = [], onToggleSave }) {
+function RiderList({ riders = [], savedRiderIds = [], onToggleSave }) {
   return (
     <div className="rider-grid">
       {riders.map((rider) => (

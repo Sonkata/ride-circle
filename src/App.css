@@ -1573,3 +1573,258 @@ main {
     text-align: center;
   }
 }
+.menu-toggle {
+  display: none;
+  border: none;
+  background: rgba(255, 255, 255, 0.08);
+  color: #ffffff;
+  width: 44px;
+  height: 44px;
+  border-radius: 14px;
+  font-size: 1.4rem;
+  cursor: pointer;
+}
+
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: grid;
+  place-items: center;
+  padding: 20px;
+  background: rgba(0, 0, 0, 0.72);
+  backdrop-filter: blur(6px);
+}
+
+.confirm-modal {
+  width: min(460px, 100%);
+  padding: 28px;
+  border-radius: 26px;
+  background: #111111;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: 0 24px 90px rgba(0, 0, 0, 0.55);
+}
+
+.confirm-modal h2 {
+  margin: 0 0 10px;
+  font-size: 2rem;
+}
+
+.confirm-modal p {
+  margin: 0;
+  color: #bdbdbd;
+  line-height: 1.7;
+}
+
+.modal-actions {
+  margin-top: 24px;
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+}
+
+.modal-actions button {
+  border: none;
+  padding: 11px 16px;
+  border-radius: 999px;
+  color: #ffffff;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.modal-cancel-btn {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.modal-confirm-btn {
+  background: #ff3b3b;
+}
+
+.edit-form-actions {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+.messages-page {
+  background:
+    radial-gradient(circle at top right, rgba(255, 59, 59, 0.14), transparent 28%),
+    radial-gradient(circle at bottom left, rgba(255, 255, 255, 0.05), transparent 24%),
+    #080808;
+}
+
+.messages-layout {
+  display: grid;
+  grid-template-columns: 1fr 0.9fr;
+  gap: 28px;
+  align-items: start;
+}
+
+.conversation-list,
+.chat-preview {
+  border-radius: 30px;
+  background:
+    linear-gradient(145deg, rgba(255, 255, 255, 0.09), rgba(255, 255, 255, 0.03));
+  border: 1px solid rgba(255, 255, 255, 0.11);
+  box-shadow: 0 18px 50px rgba(0, 0, 0, 0.28);
+}
+
+.conversation-list {
+  padding: 18px;
+  display: grid;
+  gap: 14px;
+}
+
+.conversation-card {
+  padding: 16px;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: 16px;
+  align-items: center;
+  border-radius: 22px;
+  background: rgba(255, 255, 255, 0.06);
+  transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.conversation-card:hover {
+  transform: translateY(-3px);
+  background: rgba(255, 255, 255, 0.09);
+}
+
+.conversation-avatar {
+  width: 56px;
+  height: 56px;
+  display: grid;
+  place-items: center;
+  border-radius: 18px;
+  background: rgba(255, 59, 59, 0.14);
+  font-size: 1.8rem;
+}
+
+.conversation-card h2 {
+  margin: 0 0 4px;
+  font-size: 1.2rem;
+}
+
+.conversation-card p {
+  margin: 0 0 8px;
+  color: #8f8f8f;
+}
+
+.conversation-card span {
+  color: #d8d8d8;
+}
+
+.conversation-meta {
+  display: grid;
+  gap: 6px;
+  text-align: right;
+}
+
+.conversation-meta strong {
+  color: #ff3b3b;
+  font-size: 0.82rem;
+}
+
+.conversation-meta small {
+  color: #8f8f8f;
+}
+
+.chat-preview {
+  padding: 28px;
+}
+
+.chat-preview h2 {
+  margin: 0 0 24px;
+  font-size: 2.4rem;
+  letter-spacing: -1px;
+}
+
+.chat-bubble {
+  max-width: 82%;
+  margin-bottom: 14px;
+  padding: 14px 16px;
+  border-radius: 18px;
+  color: #ffffff;
+  line-height: 1.5;
+}
+
+.chat-bubble.incoming {
+  background: rgba(255, 255, 255, 0.09);
+}
+
+.chat-bubble.outgoing {
+  margin-left: auto;
+  background: rgba(255, 59, 59, 0.85);
+}
+
+.chat-input-mock {
+  margin-top: 24px;
+  padding: 15px 18px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.07);
+  color: #8f8f8f;
+}
+
+@media (max-width: 900px) {
+  .navbar {
+    flex-direction: row;
+    align-items: center;
+  }
+
+  .menu-toggle {
+    display: grid;
+    place-items: center;
+  }
+
+  .nav-links {
+    display: none;
+    width: 100%;
+    padding: 16px;
+    position: absolute;
+    top: 84px;
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    align-items: stretch;
+    background: rgba(6, 6, 6, 0.98);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  .nav-links.open {
+    display: flex;
+  }
+
+  .nav-links a {
+    padding: 12px;
+    border-radius: 14px;
+    background: rgba(255, 255, 255, 0.04);
+  }
+
+  .messages-layout {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 620px) {
+  .modal-actions {
+    flex-direction: column;
+  }
+
+  .modal-actions button {
+    width: 100%;
+  }
+
+  .conversation-card {
+    grid-template-columns: auto 1fr;
+  }
+
+  .conversation-meta {
+    grid-column: 1 / -1;
+    text-align: left;
+  }
+
+  .edit-form-actions .btn {
+    width: 100%;
+  }
+}

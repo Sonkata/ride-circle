@@ -27,6 +27,7 @@ function RiderCard({ rider, isSaved = false, onToggleSave }) {
         <span>{rider.bikeType}</span>
         <span>{rider.experience}</span>
         <span>{rider.ridingStyle}</span>
+        <span>{rider.connectionMode}</span>
       </div>
 
       <div className="looking-for">

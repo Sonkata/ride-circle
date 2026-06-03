@@ -54,11 +54,16 @@ function RiderDetails() {
           <div className="profile-status">
             <span>{rider.experience}</span>
             <span>{rider.ridingStyle}</span>
+            <span>{rider.connectionMode}</span>
           </div>
 
           <button
             type="button"
-            className={isSaved ? "btn secondary-btn profile-save-btn" : "btn primary-btn profile-save-btn"}
+            className={
+              isSaved
+                ? "btn secondary-btn profile-save-btn"
+                : "btn primary-btn profile-save-btn"
+            }
             onClick={handleToggleSave}
           >
             {isSaved ? "Saved Rider" : "Save Rider"}
@@ -70,8 +75,8 @@ function RiderDetails() {
           <h2>{rider.name}'s road vibe</h2>
 
           <p className="page-text">
-            {rider.name} rides a {rider.bike} and is looking for biker
-            connections based on real rides, similar pace, and shared routes.
+            {rider.name} rides a {rider.bike}. This profile is based on riding
+            compatibility, not just photos.
           </p>
 
           <div className="profile-info-grid">
@@ -94,6 +99,16 @@ function RiderDetails() {
               <span>Available</span>
               <strong>{rider.available}</strong>
             </div>
+
+            <div>
+              <span>Connection mode</span>
+              <strong>{rider.connectionMode}</strong>
+            </div>
+
+            <div>
+              <span>Experience</span>
+              <strong>{rider.experience}</strong>
+            </div>
           </div>
 
           <div className="profile-section">
@@ -110,9 +125,8 @@ function RiderDetails() {
             <h3>Compatibility idea</h3>
 
             <p className="profile-note">
-              RideCircle is not matching people only by photos. This profile is
-              focused on bike type, pace, experience, city, availability, and
-              what kind of connection the rider wants.
+              RideCircle can later calculate compatibility based on city, bike
+              type, pace, experience, availability, and connection mode.
             </p>
           </div>
 
@@ -121,7 +135,9 @@ function RiderDetails() {
               Invite to Ride
             </Link>
 
-            <button className="btn secondary-btn">Send Message</button>
+            <Link to="/messages" className="btn secondary-btn">
+              Send Message
+            </Link>
           </div>
         </div>
       </div>

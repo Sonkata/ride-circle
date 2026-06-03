@@ -7,6 +7,7 @@ export const riders = [
     bikeType: "Sport",
     experience: "Beginner",
     ridingStyle: "Chill / Normal",
+    connectionMode: "Maybe dating",
     lookingFor: ["Riding friends", "Group rides", "Maybe dating"],
     available: "Weekends",
     avatar: "🏍️"
@@ -19,6 +20,7 @@ export const riders = [
     bikeType: "Naked",
     experience: "Intermediate",
     ridingStyle: "Fast / Street",
+    connectionMode: "Group rides",
     lookingFor: ["Group rides", "Events"],
     available: "Evenings",
     avatar: "🔥"
@@ -31,6 +33,7 @@ export const riders = [
     bikeType: "Sport",
     experience: "Intermediate",
     ridingStyle: "Chill / Scenic",
+    connectionMode: "Friends only",
     lookingFor: ["Riding friends", "Events"],
     available: "Sundays",
     avatar: "⚡"
@@ -43,6 +46,7 @@ export const riders = [
     bikeType: "Naked",
     experience: "Advanced",
     ridingStyle: "Twisty roads",
+    connectionMode: "Group rides",
     lookingFor: ["Group rides", "Garage help"],
     available: "Weekends",
     avatar: "🛠️"
@@ -55,6 +59,7 @@ export const riders = [
     bikeType: "Supersport",
     experience: "Advanced",
     ridingStyle: "Fast",
+    connectionMode: "Maybe dating",
     lookingFor: ["Group rides", "Maybe dating"],
     available: "Friday nights",
     avatar: "💨"
@@ -67,6 +72,7 @@ export const riders = [
     bikeType: "Sport",
     experience: "Beginner",
     ridingStyle: "Chill",
+    connectionMode: "Friends only",
     lookingFor: ["Riding friends", "Coffee rides"],
     available: "Weekends",
     avatar: "🌙"

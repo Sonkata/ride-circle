@@ -8,10 +8,17 @@ import useLocalStorage from "../hooks/useLocalStorage";
 
 function Discover() {
   const [searchTerm, setSearchTerm] = useState("");
-  const [activeFilter, setActiveFilter] = useState("All");
+  const [activeBikeType, setActiveBikeType] = useState("All");
+  const [activeConnectionMode, setActiveConnectionMode] = useState("All");
   const [savedRiderIds, setSavedRiderIds] = useLocalStorage("savedRiderIds", []);
 
   const bikeTypeFilters = ["All", "Sport", "Naked", "Supersport"];
+  const connectionFilters = [
+    "All",
+    "Friends only",
+    "Group rides",
+    "Maybe dating"
+  ];
 
   const filteredRiders = riders.filter((rider) => {
     const searchText = searchTerm.toLowerCase();
@@ -21,10 +28,14 @@ function Discover() {
       rider.city.toLowerCase().includes(searchText) ||
       rider.bike.toLowerCase().includes(searchText);
 
-    const matchesFilter =
-      activeFilter === "All" || rider.bikeType === activeFilter;
+    const matchesBikeType =
+      activeBikeType === "All" || rider.bikeType === activeBikeType;
 
-    return matchesSearch && matchesFilter;
+    const matchesConnectionMode =
+      activeConnectionMode === "All" ||
+      rider.connectionMode === activeConnectionMode;
+
+    return matchesSearch && matchesBikeType && matchesConnectionMode;
   });
 
   function handleToggleSave(riderId) {
@@ -39,8 +50,14 @@ function Discover() {
 
   function handleClearFilters() {
     setSearchTerm("");
-    setActiveFilter("All");
+    setActiveBikeType("All");
+    setActiveConnectionMode("All");
   }
+
+  const hasActiveFilters =
+    searchTerm !== "" ||
+    activeBikeType !== "All" ||
+    activeConnectionMode !== "All";
 
   return (
     <section className="page-section discover-page">
@@ -49,19 +66,35 @@ function Discover() {
         <h1>Find biker friends near you.</h1>
 
         <p className="page-text">
-          Search for riders by city, bike type, riding style, and what kind of
-          connection they are looking for.
+          Search for riders by city, bike type, riding style, and connection
+          mode. Dating is optional, not the main focus.
         </p>
       </div>
 
-      <div className="discover-controls">
+      <div className="ride-controls">
         <SearchBox searchTerm={searchTerm} onSearchChange={setSearchTerm} />
 
-        <FilterButtons
-          filters={bikeTypeFilters}
-          activeFilter={activeFilter}
-          onFilterChange={setActiveFilter}
-        />
+        <div className="filters-panel">
+          <div className="filter-group">
+            <p>Bike type</p>
+
+            <FilterButtons
+              filters={bikeTypeFilters}
+              activeFilter={activeBikeType}
+              onFilterChange={setActiveBikeType}
+            />
+          </div>
+
+          <div className="filter-group">
+            <p>Connection mode</p>
+
+            <FilterButtons
+              filters={connectionFilters}
+              activeFilter={activeConnectionMode}
+              onFilterChange={setActiveConnectionMode}
+            />
+          </div>
+        </div>
       </div>
 
       <div className="results-row">
@@ -71,7 +104,7 @@ function Discover() {
           <strong>{savedRiderIds.length}</strong> saved
         </p>
 
-        {(searchTerm !== "" || activeFilter !== "All") && (
+        {hasActiveFilters && (
           <button onClick={handleClearFilters}>Clear filters</button>
         )}
       </div>
@@ -85,7 +118,7 @@ function Discover() {
       ) : (
         <div className="empty-state">
           <h2>No riders found.</h2>
-          <p>Try another city, bike model, or filter.</p>
+          <p>Try another city, bike model, or connection mode.</p>
           <button onClick={handleClearFilters}>Reset search</button>
         </div>
       )}
