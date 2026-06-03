@@ -2,25 +2,22 @@ import { Link } from "react-router-dom";
 
 import { riders } from "../data/riders";
 import { rides as defaultRides } from "../data/rides";
+import { defaultProfile } from "../data/defaultProfile";
 import useLocalStorage from "../hooks/useLocalStorage";
 
 function Profile() {
   const [savedRiderIds] = useLocalStorage("savedRiderIds", []);
   const [joinedRideIds] = useLocalStorage("joinedRideIds", []);
   const [createdRides] = useLocalStorage("createdRides", []);
+  const [storedProfile] = useLocalStorage("userProfile", defaultProfile);
 
   const profile = {
-    name: "Soner",
-    city: "Pleven",
-    bike: "Honda CBR 125R",
-    bikeType: "Sport",
-    experience: "Beginner",
-    ridingStyle: "Chill / Normal",
-    available: "Weekends",
-    avatar: "🏍️",
-    lookingFor: ["Riding friends", "Group rides", "Maybe dating"],
-    bio:
-      "New rider building confidence, looking for chill rides, biker friends, and people who actually enjoy the road."
+    ...defaultProfile,
+    ...storedProfile,
+    garage:
+      storedProfile.garage && storedProfile.garage.length > 0
+        ? storedProfile.garage
+        : defaultProfile.garage
   };
 
   const allRides = [...createdRides, ...defaultRides];
@@ -66,7 +63,12 @@ function Profile() {
           <div className="profile-status">
             <span>{profile.experience}</span>
             <span>{profile.ridingStyle}</span>
+            <span>{profile.connectionMode}</span>
           </div>
+
+          <Link to="/edit-profile" className="btn primary-btn profile-save-btn">
+            Edit Profile
+          </Link>
         </div>
 
         <div className="rider-profile-info">
@@ -95,6 +97,16 @@ function Profile() {
               <span>Available</span>
               <strong>{profile.available}</strong>
             </div>
+
+            <div>
+              <span>Connection mode</span>
+              <strong>{profile.connectionMode}</strong>
+            </div>
+
+            <div>
+              <span>Experience</span>
+              <strong>{profile.experience}</strong>
+            </div>
           </div>
 
           <div className="profile-section">
@@ -103,6 +115,21 @@ function Profile() {
             <div className="tag-list">
               {profile.lookingFor.map((item) => (
                 <span key={item}>{item}</span>
+              ))}
+            </div>
+          </div>
+
+          <div className="profile-section">
+            <h3>My garage</h3>
+
+            <div className="garage-grid">
+              {profile.garage.map((bike) => (
+                <div className="garage-card" key={bike.id}>
+                  <span>{bike.type}</span>
+                  <h4>{bike.name}</h4>
+                  <p>{bike.engine}</p>
+                  <strong>{bike.role}</strong>
+                </div>
               ))}
             </div>
           </div>
@@ -116,8 +143,8 @@ function Profile() {
               Joined Rides
             </Link>
 
-            <Link to="/discover" className="btn secondary-btn">
-              Discover Riders
+            <Link to="/routes" className="btn secondary-btn">
+              Explore Routes
             </Link>
           </div>
         </div>

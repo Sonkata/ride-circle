@@ -1,10 +1,13 @@
 import { Link } from "react-router-dom";
+
 import { riders } from "../data/riders";
 import { rides } from "../data/rides";
+import { bikerRoutes } from "../data/routes";
 
 function Home() {
   const featuredRiders = riders.slice(0, 3);
   const featuredRides = rides.slice(0, 2);
+  const featuredRoutes = bikerRoutes.slice(0, 3);
 
   return (
     <>
@@ -16,8 +19,8 @@ function Home() {
 
           <p className="hero-text">
             RideCircle helps bikers find riding buddies, local group rides,
-            events, and real connections. Dating is optional. The ride comes
-            first.
+            routes, events, and real connections. Dating is optional. The ride
+            comes first.
           </p>
 
           <div className="hero-actions">
@@ -43,6 +46,30 @@ function Home() {
         </div>
       </section>
 
+      <section className="home-section app-stats-section">
+        <div className="app-stats-grid">
+          <div className="app-stat-card">
+            <span>{riders.length}</span>
+            <p>riders</p>
+          </div>
+
+          <div className="app-stat-card">
+            <span>{rides.length}</span>
+            <p>rides</p>
+          </div>
+
+          <div className="app-stat-card">
+            <span>{bikerRoutes.length}</span>
+            <p>routes</p>
+          </div>
+
+          <div className="app-stat-card">
+            <span>Optional</span>
+            <p>dating mode</p>
+          </div>
+        </div>
+      </section>
+
       <section className="home-section">
         <div className="section-header">
           <p className="eyebrow">How it works</p>
@@ -50,8 +77,8 @@ function Home() {
 
           <p className="page-text">
             RideCircle is built around riding compatibility, not just profile
-            photos. Find people by bike type, city, pace, experience, and ride
-            plans.
+            photos. Find people by bike type, city, pace, experience, routes,
+            and connection mode.
           </p>
         </div>
 
@@ -76,9 +103,10 @@ function Home() {
 
           <div className="feature-card">
             <span>03</span>
-            <h3>Save connections</h3>
+            <h3>Explore routes</h3>
             <p>
-              Save riders that match your road vibe and come back to them later.
+              Find route ideas by distance, city, road type, difficulty, and
+              recommended pace.
             </p>
           </div>
         </div>
@@ -114,18 +142,42 @@ function Home() {
 
         <div className="home-ride-grid">
           {featuredRides.map((ride) => (
-            <div className="home-ride-card" key={ride.id}>
+            <Link to={`/rides/${ride.id}`} className="home-ride-card" key={ride.id}>
               <p>{ride.city}</p>
               <h3>{ride.title}</h3>
               <span>{ride.route}</span>
               <strong>{ride.pace}</strong>
-            </div>
+            </Link>
           ))}
         </div>
 
         <div className="home-center-action">
           <Link to="/rides" className="btn primary-btn">
             View All Rides
+          </Link>
+        </div>
+      </section>
+
+      <section className="home-section darker-section">
+        <div className="section-header">
+          <p className="eyebrow">Routes</p>
+          <h2>Roads worth saving.</h2>
+        </div>
+
+        <div className="mini-card-grid">
+          {featuredRoutes.map((route) => (
+            <Link to="/routes" className="mini-profile-card" key={route.id}>
+              <div className="mini-avatar">🛣️</div>
+              <h3>{route.title}</h3>
+              <p>{route.city}</p>
+              <span>{route.distance} · {route.difficulty}</span>
+            </Link>
+          ))}
+        </div>
+
+        <div className="home-center-action">
+          <Link to="/routes" className="btn primary-btn">
+            Explore Routes
           </Link>
         </div>
       </section>

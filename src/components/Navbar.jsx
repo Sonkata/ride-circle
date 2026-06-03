@@ -24,15 +24,45 @@ function Navbar() {
       </button>
 
       <nav className={isMenuOpen ? "nav-links open" : "nav-links"}>
-        <NavLink to="/" onClick={closeMenu}>Home</NavLink>
-        <NavLink to="/discover" onClick={closeMenu}>Discover</NavLink>
-        <NavLink to="/saved-riders" onClick={closeMenu}>Saved</NavLink>
-        <NavLink to="/rides" onClick={closeMenu}>Rides</NavLink>
-        <NavLink to="/joined-rides" onClick={closeMenu}>Joined</NavLink>
-        <NavLink to="/create-ride" onClick={closeMenu}>Create Ride</NavLink>
-        <NavLink to="/messages" onClick={closeMenu}>Messages</NavLink>
-        <NavLink to="/profile" onClick={closeMenu}>Profile</NavLink>
-        <NavLink to="/about" onClick={closeMenu}>About</NavLink>
+        <NavLink to="/" onClick={closeMenu}>
+          Home
+        </NavLink>
+
+        <NavLink to="/discover" onClick={closeMenu}>
+          Discover
+        </NavLink>
+
+        <NavLink to="/saved-riders" onClick={closeMenu}>
+          Saved
+        </NavLink>
+
+        <NavLink to="/rides" onClick={closeMenu}>
+          Rides
+        </NavLink>
+
+        <NavLink to="/joined-rides" onClick={closeMenu}>
+          Joined
+        </NavLink>
+
+        <NavLink to="/routes" onClick={closeMenu}>
+          Routes
+        </NavLink>
+
+        <NavLink to="/create-ride" onClick={closeMenu}>
+          Create
+        </NavLink>
+
+        <NavLink to="/messages" onClick={closeMenu}>
+          Messages
+        </NavLink>
+
+        <NavLink to="/profile" onClick={closeMenu}>
+          Profile
+        </NavLink>
+
+        <NavLink to="/about" onClick={closeMenu}>
+          About
+        </NavLink>
       </nav>
     </header>
   );

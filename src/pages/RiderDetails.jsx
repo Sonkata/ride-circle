@@ -1,10 +1,20 @@
 import { Link, useParams } from "react-router-dom";
+
 import { riders } from "../data/riders";
+import { defaultProfile } from "../data/defaultProfile";
+import { calculateCompatibility } from "../utils/calculateCompatibility";
 import useLocalStorage from "../hooks/useLocalStorage";
 
 function RiderDetails() {
   const { riderId } = useParams();
+
   const [savedRiderIds, setSavedRiderIds] = useLocalStorage("savedRiderIds", []);
+  const [storedProfile] = useLocalStorage("userProfile", defaultProfile);
+
+  const profile = {
+    ...defaultProfile,
+    ...storedProfile
+  };
 
   const rider = riders.find((rider) => rider.id === Number(riderId));
 
@@ -27,6 +37,7 @@ function RiderDetails() {
   }
 
   const isSaved = savedRiderIds.includes(rider.id);
+  const compatibility = calculateCompatibility(profile, rider);
 
   function handleToggleSave() {
     setSavedRiderIds((currentIds) => {
@@ -55,6 +66,11 @@ function RiderDetails() {
             <span>{rider.experience}</span>
             <span>{rider.ridingStyle}</span>
             <span>{rider.connectionMode}</span>
+          </div>
+
+          <div className="compatibility-mini">
+            <span>{compatibility.score}%</span>
+            <p>road match</p>
           </div>
 
           <button
@@ -111,6 +127,34 @@ function RiderDetails() {
             </div>
           </div>
 
+          <div className="compatibility-card">
+            <div className="compatibility-header">
+              <div>
+                <p className="eyebrow">Compatibility</p>
+                <h3>{compatibility.score}% road match</h3>
+              </div>
+
+              <span>{compatibility.score >= 60 ? "Strong match" : "Low match"}</span>
+            </div>
+
+            <div className="compatibility-list">
+              {compatibility.checks.map((check) => (
+                <div
+                  className={
+                    check.passed
+                      ? "compatibility-row passed"
+                      : "compatibility-row"
+                  }
+                  key={check.label}
+                >
+                  <span>{check.passed ? "✓" : "×"}</span>
+                  <p>{check.label}</p>
+                  <strong>{check.points} pts</strong>
+                </div>
+              ))}
+            </div>
+          </div>
+
           <div className="profile-section">
             <h3>Looking for</h3>
 
@@ -119,15 +163,6 @@ function RiderDetails() {
                 <span key={item}>{item}</span>
               ))}
             </div>
-          </div>
-
-          <div className="profile-section">
-            <h3>Compatibility idea</h3>
-
-            <p className="profile-note">
-              RideCircle can later calculate compatibility based on city, bike
-              type, pace, experience, availability, and connection mode.
-            </p>
           </div>
 
           <div className="profile-actions">

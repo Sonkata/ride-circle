@@ -5,6 +5,14 @@ import ConfirmModal from "../components/ConfirmModal";
 import { rides as defaultRides } from "../data/rides";
 import useLocalStorage from "../hooks/useLocalStorage";
 
+const defaultSafetyRules = [
+  "Helmet required",
+  "Fuel before meeting",
+  "No reckless riding",
+  "Keep group formation",
+  "Respect the planned pace"
+];
+
 function RideDetails() {
   const { rideId } = useParams();
   const navigate = useNavigate();
@@ -38,6 +46,7 @@ function RideDetails() {
   const joinedCount = isJoined ? ride.joinedRiders + 1 : ride.joinedRiders;
   const spotsLeft = Math.max(ride.maxRiders - joinedCount, 0);
   const isFull = spotsLeft === 0 && !isJoined;
+  const safetyRules = ride.rules || defaultSafetyRules;
 
   function handleToggleJoin() {
     setJoinedRideIds((currentIds) => {
@@ -120,6 +129,19 @@ function RideDetails() {
               <div className="tag-list">
                 {ride.bikeTypes.map((type) => (
                   <span key={type}>{type}</span>
+                ))}
+              </div>
+            </div>
+
+            <div className="profile-section">
+              <h3>Ride safety rules</h3>
+
+              <div className="safety-rules-grid">
+                {safetyRules.map((rule) => (
+                  <div className="safety-rule" key={rule}>
+                    <span>✓</span>
+                    <p>{rule}</p>
+                  </div>
                 ))}
               </div>
             </div>

@@ -1828,3 +1828,307 @@ main {
     width: 100%;
   }
 }
+.biker-routes-page,
+.edit-profile-page {
+  background:
+    radial-gradient(circle at top right, rgba(255, 59, 59, 0.14), transparent 28%),
+    radial-gradient(circle at bottom left, rgba(255, 255, 255, 0.05), transparent 24%),
+    #080808;
+}
+
+.app-stats-section {
+  padding-top: 42px;
+  padding-bottom: 42px;
+  background: #050505;
+}
+
+.app-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 18px;
+}
+
+.app-stat-card {
+  padding: 24px;
+  border-radius: 24px;
+  text-align: center;
+  background:
+    linear-gradient(145deg, rgba(255, 255, 255, 0.09), rgba(255, 255, 255, 0.03));
+  border: 1px solid rgba(255, 255, 255, 0.11);
+}
+
+.app-stat-card span {
+  display: block;
+  color: #ff3b3b;
+  font-size: 2.3rem;
+  font-weight: 900;
+}
+
+.app-stat-card p {
+  margin: 8px 0 0;
+  color: #bdbdbd;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-size: 0.78rem;
+}
+
+.biker-route-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+}
+
+.biker-route-card {
+  padding: 26px;
+  border-radius: 26px;
+  background:
+    linear-gradient(145deg, rgba(255, 255, 255, 0.09), rgba(255, 255, 255, 0.03));
+  border: 1px solid rgba(255, 255, 255, 0.11);
+  box-shadow: 0 18px 50px rgba(0, 0, 0, 0.28);
+  transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.biker-route-card:hover {
+  transform: translateY(-6px);
+  border-color: rgba(255, 59, 59, 0.45);
+}
+
+.route-card-header {
+  display: flex;
+  justify-content: space-between;
+  gap: 18px;
+  margin-bottom: 18px;
+}
+
+.route-card-header h2 {
+  margin: 0;
+  font-size: 1.6rem;
+}
+
+.route-difficulty {
+  height: fit-content;
+  padding: 8px 12px;
+  border-radius: 999px;
+  background: rgba(255, 59, 59, 0.15);
+  color: #ff6b6b;
+  font-size: 0.82rem;
+  font-weight: 800;
+  white-space: nowrap;
+}
+
+.route-description {
+  margin: 0 0 22px;
+  color: #bdbdbd;
+  line-height: 1.7;
+}
+
+.route-info-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 14px;
+  margin-bottom: 20px;
+}
+
+.route-info-grid div {
+  padding: 14px;
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.route-info-grid span {
+  display: block;
+  margin-bottom: 6px;
+  color: #8f8f8f;
+  font-size: 0.78rem;
+}
+
+.route-info-grid strong {
+  color: #ffffff;
+  font-size: 0.95rem;
+}
+
+.compatibility-mini {
+  margin-top: 24px;
+  padding: 18px;
+  border-radius: 22px;
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.compatibility-mini span {
+  display: block;
+  color: #ff3b3b;
+  font-size: 2.4rem;
+  font-weight: 900;
+}
+
+.compatibility-mini p {
+  margin: 4px 0 0;
+  color: #bdbdbd;
+  font-weight: 800;
+}
+
+.compatibility-card {
+  margin: 30px 0;
+  padding: 24px;
+  border-radius: 24px;
+  background: rgba(255, 255, 255, 0.055);
+  border: 1px solid rgba(255, 255, 255, 0.09);
+}
+
+.compatibility-header {
+  display: flex;
+  justify-content: space-between;
+  gap: 18px;
+  margin-bottom: 20px;
+}
+
+.compatibility-header h3 {
+  margin: 0;
+  font-size: 2rem;
+  letter-spacing: -1px;
+}
+
+.compatibility-header > span {
+  height: fit-content;
+  padding: 8px 12px;
+  border-radius: 999px;
+  background: rgba(255, 59, 59, 0.15);
+  color: #ff6b6b;
+  font-weight: 800;
+  white-space: nowrap;
+}
+
+.compatibility-list {
+  display: grid;
+  gap: 10px;
+}
+
+.compatibility-row {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: 12px;
+  align-items: center;
+  padding: 12px;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.compatibility-row span {
+  width: 26px;
+  height: 26px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.09);
+  color: #bdbdbd;
+  font-weight: 900;
+}
+
+.compatibility-row.passed span {
+  background: rgba(255, 59, 59, 0.2);
+  color: #ff6b6b;
+}
+
+.compatibility-row p {
+  margin: 0;
+  color: #ffffff;
+  font-weight: 700;
+}
+
+.compatibility-row strong {
+  color: #bdbdbd;
+}
+
+.garage-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 14px;
+}
+
+.garage-card {
+  padding: 18px;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.garage-card span {
+  color: #ff3b3b;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  font-size: 0.72rem;
+  font-weight: 900;
+}
+
+.garage-card h4 {
+  margin: 10px 0 6px;
+  font-size: 1.2rem;
+}
+
+.garage-card p {
+  margin: 0 0 10px;
+  color: #bdbdbd;
+}
+
+.garage-card strong {
+  color: #ffffff;
+}
+
+.safety-rules-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+}
+
+.safety-rule {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px;
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.safety-rule span {
+  width: 26px;
+  height: 26px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: rgba(255, 59, 59, 0.18);
+  color: #ff6b6b;
+  font-weight: 900;
+}
+
+.safety-rule p {
+  margin: 0;
+  color: #ffffff;
+  font-weight: 700;
+}
+
+@media (max-width: 1050px) {
+  .app-stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .biker-route-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 720px) {
+  .app-stats-grid,
+  .route-info-grid,
+  .garage-grid,
+  .safety-rules-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .compatibility-header {
+    flex-direction: column;
+  }
+
+  .route-card-header {
+    flex-direction: column;
+  }
+}
